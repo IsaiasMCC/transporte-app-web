@@ -1,0 +1,153 @@
+<div class="register-container">
+  <h2>Registrarse</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="flex">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" required />
+        <mat-error
+          *ngIf="
+            registerForm.get('nombre')?.invalid &&
+            (registerForm.get('nombre')?.dirty ||
+              registerForm.get('nombre')?.touched)
+          "
+        >
+          <span *ngIf="registerForm.get('nombre')?.errors?.['required']"
+            >El nombre es requerido.</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" required />
+        <mat-error
+          *ngIf="
+            registerForm.get('apellido')?.invalid &&
+            (registerForm.get('apellido')?.dirty ||
+              registerForm.get('apellido')?.touched)
+          "
+        >
+          <span *ngIf="registerForm.get('apellido')?.errors?.['required']"
+            >El apellido es requerido.</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="flex">
+      <mat-form-field appearance="fill">
+        <mat-label>Ci</mat-label>
+        <input matInput formControlName="ci" required />
+        <mat-error
+          *ngIf="
+            registerForm.get('ci')?.invalid &&
+            (registerForm.get('ci')?.dirty ||
+              registerForm.get('ci')?.touched)
+          "
+        >
+          <span *ngIf="registerForm.get('ci')?.errors?.['required']"
+            >El ci es requerido.</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Telefono</mat-label>
+        <input matInput formControlName="telefono" required />
+        <mat-error
+          *ngIf="
+            registerForm.get('telefono')?.invalid &&
+            (registerForm.get('telefono')?.dirty ||
+              registerForm.get('telefono')?.touched)
+          "
+        >
+          <span *ngIf="registerForm.get('telefono')?.errors?.['required']"
+            >El telefono es requerido.</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="flex">
+      <mat-form-field appearance="fill">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="direccion" required />
+        <mat-error
+          *ngIf="
+            registerForm.get('direccion')?.invalid &&
+            (registerForm.get('direccion')?.dirty ||
+              registerForm.get('direccion')?.touched)
+          "
+        >
+          <span *ngIf="registerForm.get('direccion')?.errors?.['required']"
+            >El direccion es requerido.</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Genero</mat-label>
+        <input matInput formControlName="genero" required />
+        <mat-error
+          *ngIf="
+            registerForm.get('genero')?.invalid &&
+            (registerForm.get('genero')?.dirty ||
+              registerForm.get('genero')?.touched)
+          "
+        >
+          <span *ngIf="registerForm.get('genero')?.errors?.['required']"
+            >El genero es requerido.</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="email" required />
+        <mat-error
+          *ngIf="
+            registerForm.get('email')?.invalid &&
+            (registerForm.get('email')?.dirty ||
+              registerForm.get('email')?.touched)
+          "
+        >
+          <span *ngIf="registerForm.get('email')?.errors?.['required']"
+            >La contraseña es requerida.</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" required />
+        <mat-error
+          *ngIf="
+            registerForm.get('password')?.invalid &&
+            (registerForm.get('password')?.dirty ||
+              registerForm.get('password')?.touched)
+          "
+        >
+          <span *ngIf="registerForm.get('password')?.errors?.['required']"
+            >La contraseña es requerida.</span
+          >
+          <span *ngIf="registerForm.get('password')?.errors?.['minlength']"
+            >La contraseña debe tener al menos 6 caracteres.</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="text-center my-2">
+      <a class="" routerLink="/auth/login"> Iniciar Sesión </a>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="registerForm.invalid"
+    >
+      Registrarse
+    </button>
+  </form>
+</div>

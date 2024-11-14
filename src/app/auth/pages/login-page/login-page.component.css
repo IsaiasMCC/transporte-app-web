@@ -1,0 +1,37 @@
+/* Styles for the login container */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  width: 100%; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  background-color: #f5f5f5; /* Light gray background */
+  padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in width and height */
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333; /* Darker text color for contrast */
+}
+
+mat-form-field {
+  width: 100%; /* Full width of the form field */
+  margin-bottom: 20px; /* Space between fields */
+}
+
+/* Style for the submit button */
+button {
+  width: 100%; /* Full width button */
+}
+
+/* Optional: Style for the background of the form */
+form {
+  background-color: white; /* White background for the form */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 400px; /* Optional: limit the width of the form */
+  width: 100%; /* Ensure it is responsive */
+}

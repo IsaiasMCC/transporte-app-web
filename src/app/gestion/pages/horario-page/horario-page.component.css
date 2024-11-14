@@ -1,0 +1,16 @@
+.small-input {
+  font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+  height: 36px; /* Ajusta la altura del input */
+}
+
+.small-input .mat-form-field-wrapper {
+  padding-bottom: 0.5em; /* Reduce el espacio interno */
+}
+
+.small-input .mat-form-field-flex {
+  height: 36px; /* Ajusta la altura total del campo */
+}
+
+.small-input .mat-form-field-infix {
+  padding: 0 8px; /* Reduce el padding interno horizontal */
+}

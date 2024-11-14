@@ -1,0 +1,96 @@
+<nav>
+  <ul class="nav-links">
+    <li><a href="/" class="logo">Clínica San Santiago</a></li>
+  </ul>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre Nosotros</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#team">Equipo</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <div>
+    <a *ngIf="isAuthenticated" routerLink="/reserva" class="btn">Reservar Fichas</a>
+    <ng-container *ngIf="isAuthenticated">
+      <a routerLink="/gestion" class="btn" *ngIf="(rol !== null)">Panel Admin.</a>
+    </ng-container>
+    <ng-container *ngIf="!isAuthenticated">
+      <a routerLink="/auth/login" class="btn">Iniciar Sesión</a>
+    </ng-container>
+  </div>
+  <div class="user-profile" >
+    <div class="caja">
+      <p class="circle text-center">{{ userNameInitial.nombre[0] }}</p>
+    </div>
+    <div class="dropdown">
+      <ng-container>
+        <a routerLink="/reserva/fichas">Fichas</a>
+      </ng-container>
+      <a routerLink="#" routerLinkActive="router-link-active"  (click)="logout()">Cerrar Sesión</a>
+    </div>
+  </div>
+</nav>
+<div class="appointment bg-green-500" style="display: flex; justify-content: space-around">
+  <div>
+    <h2 class="text-center">Consulta de Fichas</h2>
+    <div style="display: flex; margin: 0 100px;">
+      <div class="card">
+        <div class="card-header text-center pt-2">
+          <p>Buscar Fichas</p>
+        </div>
+        <div class="card-content">
+          <label class="label" for="service">Especialidad</label>
+          <select formControlName="service" (change)="onServiceSelect($event)" class="custom-select">
+            <option value="" disabled selected>Seleccione una especialidad</option>
+            <option *ngFor="let especialidad of especialidades" [value]="especialidad.id">{{ especialidad.nombre }}</option>
+          </select>
+        </div>
+        <div class="card-content">
+          <label class="label" for="day">Días Disponibles</label>
+          <select formControlName="day" (change)="onDaySelect($event)" class="custom-select">
+            <option value="" disabled selected>Seleccione un servicio previamente</option>
+            <option *ngFor="let dia of diasDisponibles" [value]="dia.id">{{ (dia.horario.dia.nombre) }} | {{  (dia.horario.hora_inicio) }} - {{(dia.horario.hora_fin) }} </option>
+          </select>
+        </div>
+        <div class="card-content select2">
+          <label class="label" for="horario">Fichas Disponibles</label>
+          <select formControlName="horario" (change)="onHorarioSelect($event)" class="custom-select" >
+            <option value="" disabled selected>Seleccione un horario</option>
+            <option *ngFor="let ficha of fichasDisponibles" [value]="ficha.id">{{ ficha.fecha | date }} - Dr. {{ ficha.horarioEspecialidad.medico.user.nombre }} {{ ficha.horarioEspecialidad.medico.user.apellido }} </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div>
+      <h2 class="text-center">Reserva de Fichas</h2>
+    </div>
+    <form [formGroup]="formFichas" (ngSubmit)="onSubmit()" class="form-content form card">
+      <div class="card-content">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" formControlName="nombre"  >
+      </div>
+      <div class="card-content">
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" formControlName="apellido" >
+      </div>
+      <div class="card-content">
+        <label for="fecha">Fecha de la Ficha</label>
+        <input type="date" id="fecha" formControlName="fecha">
+      </div>
+      <div class="card-content">
+        <label for="especialidad">Especialidad</label>
+        <select formControlName="especialidad" class="custom-select" #serviceSelect>
+          <option value="" disabled selected>Seleccione un servicio disponible</option>
+          <option *ngFor="let servicio of servicios" [value]="servicio.id">{{ servicio.nombre }}</option>
+        </select>
+      </div>
+      <div class="card-content">
+        <label for="hora">Hora de la Ficha</label>
+        <input type="text" id="hora" formControlName="hora" name="hora" >
+      </div>
+      <button id="submitFicha" type="submit" class="btn">Reservar Ficha</button>
+    </form>
+  </div>
+</div>

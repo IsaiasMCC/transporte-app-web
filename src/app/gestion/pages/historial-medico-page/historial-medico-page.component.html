@@ -1,0 +1,42 @@
+<mat-card-content>
+  <app-card-header [title]=nombre></app-card-header>
+  <div class="flex justify-content-between align-items-center">
+  </div>
+</mat-card-content>
+<mat-card-content class="w-6">
+  <form [formGroup]="custonFormFichas" (submit)="submitFormFichas()" class="w-9 mt-3">
+    <div>
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            type="text"
+            name="title"
+            formControlName="title"
+          />
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="w-full">
+        <mat-label> Detalle </mat-label>
+        <textarea matInput
+          name="description"
+          formControlName="description"
+          type="text"
+          rows="4" cols="50"
+        >
+        </textarea>
+      </mat-form-field>
+    </div>
+    <div class="flex">
+      <button mat-raised-button color="primary" type="submit">
+        Registrar
+      </button>
+      <div class="mx-2"></div>
+      <button mat-raised-button color="accent" type="button" (click)="volverAtras()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card-content>

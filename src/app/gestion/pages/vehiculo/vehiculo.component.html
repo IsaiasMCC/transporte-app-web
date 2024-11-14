@@ -1,0 +1,127 @@
+<mat-card-content>
+  <app-card-header title="Gestionar Vehículos"></app-card-header>
+  <div class="flex justify-content-between align-items-center">
+    <button class="my-3" mat-raised-button color="primary" (click)="openDialog()">
+      Agregar Vehículo
+    </button>
+  </div>
+  <div class="mat-elevation-z2">
+    <table mat-table matSort [dataSource]="dataSource">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Placa Column -->
+      <ng-container matColumnDef="placa">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Placa</th>
+        <td mat-cell *matCellDef="let element">{{ element.placa }}</td>
+      </ng-container>
+
+      <!-- Marca Column -->
+      <ng-container matColumnDef="marca">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Marca</th>
+        <td mat-cell *matCellDef="let element">{{ element.marca }}</td>
+      </ng-container>
+
+      <!-- Modelo Column -->
+      <ng-container matColumnDef="modelo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Modelo</th>
+        <td mat-cell *matCellDef="let element">{{ element.modelo }}</td>
+      </ng-container>
+
+      <!-- Año de Fabricación Column -->
+      <ng-container matColumnDef="anioFabricacion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Año de Fabricación</th>
+        <td mat-cell *matCellDef="let element">{{ element.anioFabricacion }}</td>
+      </ng-container>
+
+      <!-- Número de Chasis Column -->
+      <ng-container matColumnDef="numeroChasis">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Número de Chasis</th>
+        <td mat-cell *matCellDef="let element">{{ element.numeroChasis }}</td>
+      </ng-container>
+
+      <!-- Color Column -->
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Color</th>
+        <td mat-cell *matCellDef="let element">{{ element.color }}</td>
+      </ng-container>
+
+      <!-- Acción Column -->
+      <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Acción</th>
+        <td mat-cell *matCellDef="let element">
+          <div>
+            <button mat-icon-button (click)="handleGoToEditPage(element.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="handleDeleteVehicle(element.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</mat-card-content>
+
+<ng-template #alertForm>
+  <app-alert title="Agregar Nuevo Vehículo">
+    <mat-card-content content>
+      <form [formGroup]="custonForm" (submit)="submitForm()">
+        <div>
+          <mat-form-field class="w-full">
+            <mat-label>Placa</mat-label>
+            <input matInput type="text" name="placa" formControlName="placa" />
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label>Marca</mat-label>
+            <input matInput type="text" name="marca" formControlName="marca" />
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label>Modelo</mat-label>
+            <input matInput type="text" name="modelo" formControlName="modelo" />
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label>Año de Fabricación</mat-label>
+            <input matInput type="number" name="anioFabricacion" formControlName="anioFabricacion" />
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label>Número de Chasis</mat-label>
+            <input matInput type="text" name="numeroChasis" formControlName="numeroChasis" />
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label>Color</mat-label>
+            <input matInput type="text" name="color" formControlName="color" />
+          </mat-form-field>
+        </div>
+        <div class="flex">
+          <button mat-raised-button color="primary" type="submit">
+            Registrar
+          </button>
+          <div class="mx-2"></div>
+          <button mat-raised-button color="accent" mat-dialog-close>
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </app-alert>
+</ng-template>

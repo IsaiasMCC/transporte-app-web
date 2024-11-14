@@ -1,0 +1,28 @@
+<div class="login-container">
+  <h2>Iniciar Sesión</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required>
+      <mat-error *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+        <span *ngIf="loginForm.get('email')?.errors?.['required']">El email es requerido.</span>
+        <span *ngIf="loginForm.get('email')?.errors?.['email']">El email no es válido.</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password" required>
+      <mat-error *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+        <span *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida.</span>
+        <span *ngIf="loginForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</span>
+      </mat-error>
+    </mat-form-field>
+    <div class="text-center my-2">
+      <a class="" routerLink="/auth/register"> Registrarse </a>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+    </div>
+  </form>
+</div>

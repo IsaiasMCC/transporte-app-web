@@ -1,0 +1,168 @@
+<mat-card-content>
+  <app-card-header title="Gestionar Cargas"></app-card-header>
+  <div class="flex justify-content-between align-items-center">
+    <button class="my-3" mat-raised-button color="primary" (click)="openDialog()">
+      Agregar Carga
+    </button>
+  </div>
+  <div class="mat-elevation-z2">
+    <table mat-table matSort [dataSource]="dataSource">
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Id.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+        <td mat-cell *matCellDef="let element">{{ element.fecha | date }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="peso">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Peso</th>
+        <td mat-cell *matCellDef="let element">{{ element.peso }}</td>
+      </ng-container>
+
+      <!-- Driver Column -->
+      <ng-container matColumnDef="conductor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Conductor</th>
+        <td mat-cell *matCellDef="let element">{{ element.conductor.nombre }} {{ element.conductor.apellido }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Acción</th>
+        <td mat-cell *matCellDef="let element">
+          <div>
+            <button mat-icon-button (click)="handleGoToEditPage(element.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="handleGoToMapRoute(element.id, element.origen, element.destino)">
+              <mat-icon>map</mat-icon>
+            </button>
+            <button mat-icon-button (click)="handleDeleteProduct(element.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</mat-card-content>
+<ng-template #alertForm>
+  <app-alert title="Agregar Nueva Carga">
+    <mat-card-content content>
+      <form [formGroup]="custonForm" (submit)="submitForm()">
+        <div>
+          <mat-form-field class="w-full">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" name="nombre" formControlName="nombre" />
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label>Fecha</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              name="fecha"
+              formControlName="fecha"
+            />
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label>Peso kg.</mat-label>
+            <input matInput type="number" name="peso" formControlName="peso" />
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label> Conductores </mat-label>
+            <mat-select
+              type="text"
+              name="conductor"
+              formControlName="conductor"
+            >
+              <mat-option
+                *ngFor="let usuario of usuarios"
+                [value]="usuario"
+              >
+                {{ usuario.nombre }} {{ usuario.apellido }} - (
+                {{ usuario.rol }})
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="w-full">
+            <mat-label>Descripción carga</mat-label>
+            <input matInput type="text" name="descripcion" formControlName="descripcion" />
+          </mat-form-field>
+        </div>
+
+        <div class="flex">
+          <div class="w-1/2 pr-2">
+            <mat-form-field class="w-full">
+              <mat-label>Origen Latitud</mat-label>
+              <input matInput type="number" name="origen_lat" formControlName="origen_lat" />
+            </mat-form-field>
+          </div>
+
+          <div class="w-1/2 pl-2">
+            <mat-form-field class="w-full">
+              <mat-label>Origen Longitud</mat-label>
+              <input matInput type="number" name="origen_lng" formControlName="origen_lng" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="flex">
+          <div class="w-1/2 pr-2">
+            <mat-form-field class="w-full">
+              <mat-label>Destino Latitud</mat-label>
+              <input matInput type="number" name="destino_lat" formControlName="destino_lat" />
+            </mat-form-field>
+          </div>
+
+          <div class="w-1/2 pl-2">
+            <mat-form-field class="w-full">
+              <mat-label>Destino Longitud</mat-label>
+              <input matInput type="number" name="destino_lng" formControlName="destino_lng" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="flex">
+          <button mat-raised-button color="primary" type="submit">
+            Registrar
+          </button>
+          <div class="mx-2"></div>
+          <button mat-raised-button color="accent" mat-dialog-close>
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </app-alert>
+</ng-template>
+

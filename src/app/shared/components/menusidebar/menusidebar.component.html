@@ -1,0 +1,59 @@
+<mat-accordion>
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Gestionar Roles y Permisos </mat-panel-title>
+    </mat-expansion-panel-header>
+      <mat-list>
+        <div>
+          <!-- <button mat-button routerLink="reconocimiento/camara"> Retirar Estudiante </button> -->
+          <li>
+            <button mat-button routerLink="/gestion/roles"> Gestionar Roles </button>
+          </li>
+        </div>
+      </mat-list>
+  </mat-expansion-panel>
+  <mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Gestionar Conductores </mat-panel-title>
+  </mat-expansion-panel-header>
+    <mat-list>
+      <div>
+          <li>
+            <button mat-button routerLink="/gestion/conductores"> Gestionar Conductor </button>
+          </li>
+          <li>
+            <button mat-button routerLink="/gestion/vehiculos"> Gestionar Vehiculos </button>
+          </li>
+          <li>
+          </li>
+      </div>
+    </mat-list>
+</mat-expansion-panel>
+<mat-expansion-panel
+(opened)="panelOpenState = true"
+(closed)="panelOpenState = false"
+>
+<mat-expansion-panel-header>
+  <mat-panel-title> Gestionar Monitoreo</mat-panel-title>
+</mat-expansion-panel-header>
+  <mat-list>
+    <div>
+        <li>
+          <button mat-button routerLink="/gestion/cargas"> Gestionar Cargas </button>
+        </li>
+        <!-- <li>
+          <button mat-button routerLink="/gestion/horarios"> Gestionar Horarios </button>
+        </li>
+        <li>
+          <button mat-button routerLink="/gestion/citas"> Gestionar Citas </button>
+        </li> -->
+    </div>
+  </mat-list>
+</mat-expansion-panel>
+</mat-accordion>

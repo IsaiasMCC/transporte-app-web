@@ -1,0 +1,27 @@
+<mat-sidenav-container class="h-container">
+  <!-- Sidebar -->
+  <mat-sidenav #drawer mode="side" [(opened)]="isOpened" class="">
+    <div class="my-5">
+      <p class="text-center font-bold"> Transporte Carga </p>
+      <div class="text-center">
+        <img src="https://static.vecteezy.com/system/resources/previews/009/951/673/non_2x/trucking-transportation-cartoon-illustration-with-cargo-delivery-services-or-cardboard-box-sent-to-the-consumer-in-flat-style-design-vector.jpg"
+        alt="logo" width="150px">
+      </div>
+      <app-menusidebar></app-menusidebar>
+
+    </div>
+  </mat-sidenav>
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color: rgb(255, 255, 255);">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span></span>
+    </mat-toolbar>
+
+    <div class="content">
+      <ng-content select="[routes]"></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

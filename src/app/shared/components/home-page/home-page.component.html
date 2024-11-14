@@ -1,0 +1,105 @@
+<div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="/" class="logo">Transporte de Carga</a></li>
+    </ul>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre Nosotros</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#team">Equipo</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <div>
+      <a *ngIf="isAuthenticated" routerLink="/reserva" class="btn">Reservar Transporte</a>
+      <ng-container *ngIf="isAuthenticated">
+        <a routerLink="/gestion" class="btn" *ngIf="(rol !== null)">Panel Admin.</a>
+      </ng-container>
+      <ng-container *ngIf="!isAuthenticated">
+        <a routerLink="/auth/login" class="btn">Iniciar Sesión</a>
+      </ng-container>
+    </div>
+    <div class="user-profile" >
+      <ng-container *ngIf="isAuthenticated">
+        <div class="caja">
+          <p class="circle text-center">{{ userNameInitial.nombre[0] }}</p>
+        </div>
+      </ng-container>
+      <ng-container>
+      <div class="dropdown">
+          <a routerLink="/reserva/fichas">Fichas de Carga</a>
+          <a routerLink="#" routerLinkActive="router-link-active"  (click)="logout()">Cerrar Sesión</a>
+        </div>
+      </ng-container>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Bienvenido a Transporte de Carga</h1>
+      <p>Ofrecemos soluciones logísticas eficientes para el transporte de carga en todo el país.</p>
+      <a href="#services" class="btn">Nuestros Servicios</a>
+    </div>
+  </section>
+  <section id="about" class="about">
+    <div class="container">
+      <h2>Sobre Nosotros</h2>
+      <p>En Transporte de Carga, nos especializamos en ofrecer soluciones logísticas de alto nivel. Contamos con vehículos modernos y un equipo profesional comprometido con la entrega puntual y segura de tu carga.</p>
+    </div>
+  </section>
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Servicios</h2>
+      <div class="service-item">
+        <h3>Transporte Nacional</h3>
+        <p>Transporte de carga a nivel nacional con vehículos de diferentes capacidades.</p>
+      </div>
+      <div class="service-item">
+        <h3>Transporte Internacional</h3>
+        <p>Servicios de transporte internacional para entregar tus productos en cualquier parte del mundo.</p>
+      </div>
+      <div class="service-item">
+        <h3>Transporte Especializado</h3>
+        <p>Transporte de carga pesada, peligrosa o frágil, con equipos especializados para garantizar la seguridad.</p>
+      </div>
+    </div>
+  </section>
+  <section id="team" class="team">
+    <div class="container">
+      <h2>Equipo</h2>
+      <div class="team-member">
+        <img src="https://img.freepik.com/fotos-premium/chofer-transporte-carga-gestionando-ruta-camion-contenedor-carga_665183-5643.jpg?w=360" alt="Juan Pérez">
+        <h3>Juan Pérez</h3>
+        <p>Gerente Logístico</p>
+      </div>
+      <div class="team-member">
+        <img src="https://img.freepik.com/fotos-premium/chofer-transporte-carga-gestionando-ruta-camion-contenedor-carga_665183-5643.jpg?w=360" alt="María López">
+        <h3>María López</h3>
+        <p>Coordinadora de Rutas</p>
+      </div>
+      <div class="team-member">
+        <img src="https://img.freepik.com/fotos-premium/chofer-transporte-carga-gestionando-ruta-camion-contenedor-carga_665183-5643.jpg?w=360" alt="Carlos Martínez">
+        <h3>Carlos Martínez</h3>
+        <p>Jefe de Operaciones</p>
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contacto</h2>
+      <div class="location">
+        <p>Ubicación: Calle 123, Zona Industrial, Ciudad</p>
+        <p>Teléfono: 76320012</p>
+        <p>Email: contacto@transportecarga.com</p>
+      </div>
+      <form>
+        <input type="text" placeholder="Nombre" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Mensaje" required></textarea>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2024 Transporte de Carga. Todos los derechos reservados.</p>
+  </footer>
+
+</div>

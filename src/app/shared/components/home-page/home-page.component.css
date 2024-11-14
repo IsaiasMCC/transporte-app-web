@@ -1,0 +1,258 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+header {
+  background-color: #003366;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 3%;
+  background-color: #003366;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: #e67e22;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #d35400;
+  cursor: pointer;
+}
+
+.hero {
+  background: url("https://ableseguros.com/wp-content/uploads/portada-un-seguro-de-salud-la-decision-mas-sabia-abl-768x402.png")
+      no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.hero-content {
+  max-width: 600px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.container {
+  padding: 50px 10%;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  width: 50px;
+  height: 2px;
+  background: #e67e22;
+  display: block;
+  margin: 10px auto;
+}
+
+.service-item,
+.team-member {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact .location {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact button {
+  padding: 10px 20px;
+}
+
+footer {
+  background-color: #2d9cdb;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form .form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form .form-group input,
+.form .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form button {
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.register,
+.appointment {
+  padding: 100px 0;
+}
+
+.register .container,
+.appointment .container {
+  text-align: center;
+}
+
+.user-profile {
+  position: relative;
+  display: inline-block;
+}
+
+.user-profile .caja {
+  position: relative;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.user-profile .dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.user-profile .dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.user-profile .dropdown a:hover {
+  background-color: #ddd;
+}
+
+.user-profile:hover .dropdown {
+  display: block;
+}
+.circle {
+  padding: 10px 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.card-ficha-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.card-ficha-grid form {
+  border: 2px solid rgb(127, 176, 220);
+  padding: 15px;
+  border-radius: 5px;
+  background-color: rgb(170, 211, 243);
+}
+.hr {
+  border: 2px solid rgb(180, 180, 180);
+  border-style: dashed;
+}

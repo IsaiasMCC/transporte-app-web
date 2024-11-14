@@ -1,0 +1,27 @@
+<div class="order-progress-container">
+  <h2>Carga #6152</h2>
+  <div class="order-details">
+  </div>
+  <mat-vertical-stepper [selectedIndex]="currentStep">
+    <mat-step label="Carga Processed">
+      <mat-icon>shopping_cart</mat-icon>
+      <p>Carga is processed</p>
+    </mat-step>
+    <mat-step label="Carga Designing">
+      <mat-icon>brush</mat-icon>
+      <p>Carga is in designing</p>
+    </mat-step>
+    <mat-step label="Carga Shipped">
+      <mat-icon>local_shipping</mat-icon>
+      <p>Carga is shipped</p>
+    </mat-step>
+    <mat-step label="Carga En Route">
+      <mat-icon>directions_car</mat-icon>
+      <p>Carga is en route</p>
+    </mat-step>
+    <mat-step label="Carga Arrived">
+      <mat-icon>check_circle</mat-icon>
+      <p>Carga has arrived</p>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

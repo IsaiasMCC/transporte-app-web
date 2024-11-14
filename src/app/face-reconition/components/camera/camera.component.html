@@ -1,0 +1,7 @@
+<div class="text-center">
+    <div>
+      <button *ngIf="!isCameraActive" (click)="startCamera()">Activar Cámara</button>
+      <button *ngIf="isCameraActive" (click)="stopCamera()">Detener Cámara</button>
+    </div>
+  <video #videoElement autoplay></video>
+</div>

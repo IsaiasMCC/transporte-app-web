@@ -1,0 +1,60 @@
+<!-- ficha-list.component.html -->
+<div class="">
+  <nav>
+    <ul class="nav-links">
+      <li><a href="/" class="logo">Clínica San Santiago</a></li>
+    </ul>
+    <ul class="nav-links">
+      <li><a href="#about">Sobre Nosotros</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#team">Equipo</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <div>
+      <a *ngIf="isAuthenticated" routerLink="/reserva" class="btn">Reservar Fichas</a>
+      <ng-container *ngIf="isAuthenticated">
+        <a routerLink="/gestion" class="btn" *ngIf="(rol !== null)">Panel Admin.</a>
+      </ng-container>
+      <ng-container *ngIf="!isAuthenticated">
+        <a routerLink="/auth/login" class="btn">Iniciar Sesión</a>
+      </ng-container>
+    </div>
+    <div class="user-profile" >
+      <div class="caja">
+        <p class="circle text-center">{{ userNameInitial.nombre[0] }}</p>
+      </div>
+      <div class="dropdown">
+        <ng-container>
+          <a routerLink="/reserva/fichas">Fichas</a>
+        </ng-container>
+        <a routerLink="#" routerLinkActive="router-link-active"  (click)="logout()">Cerrar Sesión</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="appointment">
+    <h2 class="text-center">Lista de Fichas Reservadas</h2>
+    <div class="grid col-offset-3">
+      <div class="card mx-3" *ngFor="let ficha of fichasCompradas">
+        <div class="card-header">
+          <h3 class="text-center">Ficha Medica</h3>
+        </div>
+        <div class="card-ficha-grid ">
+          <div class="px-2">
+            <strong>Código:</strong> {{ ficha.id }} <br />
+            <strong>Fecha:</strong> {{ ficha.ficha.fecha | date }} <br />
+            <hr class="hr" />
+            <strong>Hora Inicio:</strong> {{ ficha.ficha.horarioEspecialidad.horario.hora_inicio }} <br />
+            <strong>Hora Fin:</strong> {{ ficha.ficha.horarioEspecialidad.horario.hora_fin }} <br />
+            <strong>Especialidad:</strong> {{ ficha.ficha.horarioEspecialidad.especialidad.nombre }} <br />
+            <hr class="hr" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <!-- <p>&copy; 2024 Clínica San Santiago. Todos los derechos reservados.</p> -->
+  </footer>
+</div>
